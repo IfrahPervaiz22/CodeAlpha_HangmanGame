@@ -12,14 +12,12 @@ guessed_letters = []
 
 
 def update_display():
-    """Update word, attempts, and guessed letters"""
     word_display.config(text=" ".join(guessed))
     attempts_display.config(text=f"Attempts left: {attempts_left}")
     letters_display.config(text=f"Guessed: {', '.join(guessed_letters)}")
 
 
 def draw_hangman():
-    """Draw parts of hangman based on wrong attempts"""
     wrong = 6 - attempts_left
 
     if wrong == 1:  # base
@@ -41,7 +39,6 @@ def draw_hangman():
 
 
 def guess_letter():
-    """Handle guessed letter"""
     global attempts_left
 
     letter = entry.get().lower()
@@ -74,11 +71,11 @@ def guess_letter():
 def check_game_over():
     """Check win/lose conditions"""
     if "_" not in guessed:
-        result_display.config(text="🎉 Congratulations! You won!")
+        result_display.config(text="Congratulations! You won!")
         entry.config(state="disabled")
         guess_button.config(state="disabled")
     elif attempts_left == 0:
-        result_display.config(text=f"😢 Game Over! The word was '{word}'")
+        result_display.config(text=f"Game Over! The word was '{word}'")
         entry.config(state="disabled")
         guess_button.config(state="disabled")
 
